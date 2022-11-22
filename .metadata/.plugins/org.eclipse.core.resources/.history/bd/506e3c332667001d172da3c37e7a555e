@@ -1,0 +1,28 @@
+package assignment1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class PreviousTab {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		 WebDriverManager.chromedriver().setup();
+		 
+		 ChromeDriver driver = new ChromeDriver();
+		 
+		driver.get("https://www.google.com");
+		
+		String currentTab = driver.getWindowHandle();
+		
+		driver.findElement(By.xpath("input[@class='gLFyf']")).sendKeys("Daksh");
+		
+		driver.findElement(By.xpath("\r\n"
+				+ "input[@class='gNO89b' and @data-ved='0ahUKEwir_bvfsrf7AhXySGwGHeQ_CY4Q4dUDCA0']")).click();
+		
+	}
+
+}

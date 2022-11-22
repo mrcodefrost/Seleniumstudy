@@ -1,0 +1,14 @@
+package assignment;
+
+public class SubstringOfString {
+
+	public static void main(String[] args) {
+		
+		String s = "Hello Hello";
+		
+		
+		System.out.println(s.substring(10));
+		
+	}
+	
+}
