@@ -23,6 +23,15 @@ public class SingaporeAirDropDowns {
 		ChromeDriver driver = new ChromeDriver();
 //		EdgeDriver driver = new EdgeDriver();
 		
+		
+		
+		
+		
+
+		
+		
+		
+		
 		driver.get("https://www.google.com");
 		driver.manage().window().maximize();
 		driver.switchTo().newWindow(WindowType.TAB);
