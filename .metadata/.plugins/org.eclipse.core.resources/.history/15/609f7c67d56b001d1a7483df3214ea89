@@ -1,0 +1,80 @@
+package basics;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class SingaporeAirDropDowns {
+
+	public static void main(String[] args) throws InterruptedException, AWTException {
+		
+		
+		WebDriverManager.chromedriver().setup();
+//		WebDriverManager.edgedriver().setup();
+		
+		ChromeDriver driver = new ChromeDriver();
+//		EdgeDriver driver = new EdgeDriver();
+		
+		driver.get("https://www.google.com");
+		driver.manage().window().maximize();
+		
+		Robot robot = new Robot();                          
+		robot.keyPress(KeyEvent.VK_CONTROL); 
+		robot.keyPress(KeyEvent.VK_T); 
+		robot.keyRelease(KeyEvent.VK_CONTROL); 
+		robot.keyRelease(KeyEvent.VK_T);
+		
+		Set <String> tabs = driver.getWindowHandles();
+		
+		Iterator <String> it = tabs.iterator();
+		String parent = it.next();
+		String child = it.next();
+		
+		
+		driver.switchTo().window(parent);
+		
+		driver.get("https://www.singaporeair.com");
+
+		
+		
+//		driver.switchTo().window(driver.window_handles[1]);
+		
+//		WebElement sideArrow = driver.findElement(By.xpath("//div[@class='ins-side-menu-arrow ins-opened']"));
+//		sideArrow.click();
+		
+		WebElement dropmenu = driver.findElement(By.xpath("//input[@id='flightClass1']"));
+		dropmenu.click();
+//		int yaxis = dropmenu.getLocation().y;
+//		int xaxis = dropmenu.getLocation().x;
+		
+		
+	
+//	JavascriptExecutor js = (JavascriptExecutor) driver;  
+//		js.executeScript("window.scrollTo(0,"+yaxis+")");
+//	dropmenu.click();
+//		
+//		List <WebElement> DropDownElements = driver.findElements(By.xpath("//div[not(@class=\"suggest-item selected\")]//div[@class='suggest-item']"));
+//		DropDownElements.size();
+//		System.out.println(DropDownElements.size());
+//		
+//		Thread.sleep(5000);
+//		driver.quit();
+		
+		
+	}
+	
+	
+}

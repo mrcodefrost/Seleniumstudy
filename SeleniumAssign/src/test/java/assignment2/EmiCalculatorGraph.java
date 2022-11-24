@@ -31,15 +31,25 @@ public class EmiCalculatorGraph {
 		
 		
 		List<WebElement> bars = driver.findElements(By.xpath("//*[local-name()='svg']//*[name()='g' and @data-z-index='3']//*[name()='rect']")); 
-
+		List<WebElement> barData = driver.findElements(By.xpath("//*[local-name()='svg']//*[name()='g' and @class='highcharts-label highcharts-tooltip highcharts-color-undefined']//*[name()='text']"));
 		
 		Actions action = new Actions(driver);
 		
 		for(int i=0; i<bars.size();i++) {
-			action.moveToElement(bars.get(i)).perform();
+			action.moveToElement(bars.get(i)).build().perform();
+			System.out.println(barData.get(i).getText());
+
 		}
 		
+	
+		System.out.println(barData.get(1).getText());
+	
 		
+		
+//		for(int i=0; i<barData.size(); i++) {
+//			System.out.println(barData.get(i).getText());
+//		}
+//		
 	
 	}
 	
