@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.openqa.selenium.By;
-
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,20 +18,8 @@ public class SingaporeAirDropDowns {
 		
 		
 		WebDriverManager.chromedriver().setup();
-//		WebDriverManager.edgedriver().setup();
-		
 		ChromeDriver driver = new ChromeDriver();
-//		EdgeDriver driver = new EdgeDriver();
-		
-		
-		
-		
-		
 
-		
-		
-		
-		
 		driver.get("https://www.google.com");
 		driver.manage().window().maximize();
 		driver.switchTo().newWindow(WindowType.TAB);
@@ -42,19 +30,15 @@ public class SingaporeAirDropDowns {
 		String parent = it.next();
 		String child = it.next();
 		
-		
 		driver.switchTo().window(child);
 		Thread.sleep(2000);
 		
 		driver.get("https://www.singaporeair.com");
 		WebElement dropmenu = driver.findElement(By.xpath("//input[@id='flightClass1']"));
-		dropmenu.click();
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		Thread.sleep(5000);
 		
 		
-//		driver.switchTo().window(driver.window_handles[1]);
-		
-//		WebElement sideArrow = driver.findElement(By.xpath("//div[@class='ins-side-menu-arrow ins-opened']"));
-//		sideArrow.click();
 		
 
 //		int yaxis = dropmenu.getLocation().y;

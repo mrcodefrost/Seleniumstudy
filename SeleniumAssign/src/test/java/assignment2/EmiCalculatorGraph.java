@@ -14,7 +14,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class EmiCalculatorGraph {
 
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		WebDriverManager.chromedriver().setup();
 		
@@ -31,26 +31,17 @@ public class EmiCalculatorGraph {
 		
 		
 		List<WebElement> bars = driver.findElements(By.xpath("//*[local-name()='svg']//*[name()='g' and @data-z-index='3']//*[name()='rect']")); 
-		List<WebElement> barData = driver.findElements(By.xpath("//*[local-name()='svg']//*[name()='g' and @class='highcharts-label highcharts-tooltip highcharts-color-undefined']//*[name()='text']"));
+		String barData = "//*[local-name()='svg']//*[name()='g' and @class='highcharts-label highcharts-tooltip highcharts-color-undefined']//*[name()='text']";
 		
 		Actions action = new Actions(driver);
 		
-		for(int i=0; i<bars.size();i++) {
-			action.moveToElement(bars.get(i)).build().perform();
-			System.out.println(barData.get(i).getText());
-
+		
+		for(WebElement e : bars) {
+			action.moveToElement(e).build().perform();
+			Thread.sleep(500);
+			System.out.println(driver.findElement(By.xpath(barData)).getText());
 		}
-		
-	
-		System.out.println(barData.get(1).getText());
-	
-		
-		
-//		for(int i=0; i<barData.size(); i++) {
-//			System.out.println(barData.get(i).getText());
-//		}
-//		
-	
+
 	}
 	
 }
